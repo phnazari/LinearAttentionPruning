@@ -12,8 +12,9 @@ os.environ["RAY_memory_monitor_refresh_ms"] = "0"
 
 @ray.remote(num_gpus=1)
 def run_evaluation_task(model_name, checkpoint_dir, config_path, args, output_file):
+    eval_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "eval_checkpoint.py")
     cmd = [
-        sys.executable, "-m", "eval_checkpoint",
+        sys.executable, eval_script,
         "--tasks", args.tasks,
         "--batch_size", str(args.batch_size),
         "--device", "cuda",
