@@ -43,9 +43,6 @@ import numpy as np
 
 # Setup paths for local libraries
 # eval_checkpoint.py is at: project_root/exp/flame/flame/eval_checkpoint.py
-project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-fla_path = os.path.join(project_root, "flash-linear-attention")
-flame_path = os.path.join(project_root, "exp/flame")
 
 print(f"DEBUG: Adding to sys.path: {fla_path}")
 print(f"DEBUG: Adding to sys.path: {flame_path}")

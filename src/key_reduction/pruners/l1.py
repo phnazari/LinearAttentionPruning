@@ -23,12 +23,6 @@ import numpy as np
 import torch.nn as nn
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# Setup paths for flash-linear-attention and flame
-file_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.abspath(os.path.join(file_dir, "../../.."))
-sys.path.insert(0, os.path.join(project_root, "flash-linear-attention"))
-sys.path.insert(0, os.path.join(project_root, "flame"))
-sys.path.insert(0, project_root)
 
 # Import flash-linear-attention modules
 import fla # noqa

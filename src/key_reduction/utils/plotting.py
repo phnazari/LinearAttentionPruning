@@ -21,14 +21,6 @@ from matplotlib.gridspec import GridSpec
 import numpy as np
 import torch
 
-# Resolve repository root (plotting.py is in src/key_reduction/utils/)
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../"))
-
-# Add project directories to sys.path
-sys.path.insert(0, project_root)
-sys.path.insert(0, os.path.join(project_root, "src"))
-sys.path.insert(0, os.path.join(project_root, "flash-linear-attention"))
-sys.path.insert(0, os.path.join(project_root, "flame"))
 
 # Import fla to register DeltaNet and other models with transformers
 import fla  # noqa

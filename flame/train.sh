@@ -73,12 +73,21 @@ model=$(jq -r '.model_type' "$config")
 #  python -c "import fla, sys; from transformers import AutoConfig; print(AutoConfig.from_pretrained(sys.argv[1]).to_json_string())" "$config" | jq -r '.model_type'
 #)
 
-mkdir -p $path
-cp * $path
-cp -r configs $path
-cp -r flame   $path
-cp -r 3rdparty/flash-linear-attention/fla $path
-cp -r 3rdparty/torchtitan/torchtitan $path
+# Resolve repository root
+FLAME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+REPO_ROOT="$( cd "$FLAME_DIR/.." && pwd )"
+
+mkdir -p "$path"
+# Copy relevant files for reproducibility
+cp "$FLAME_DIR"/*.sh "$path/" 2>/dev/null || true
+cp "$FLAME_DIR"/*.py "$path/" 2>/dev/null || true
+cp -r "$FLAME_DIR/configs" "$path/" 2>/dev/null || true
+cp -r "$FLAME_DIR/flame" "$path/" 2>/dev/null || true
+
+# Copy workspace members
+if [ -d "$REPO_ROOT/flash-linear-attention/fla" ]; then
+  cp -r "$REPO_ROOT/flash-linear-attention/fla" "$path/"
+fi
 
 # for offline systems
 # export TRANSFORMERS_OFFLINE=1
