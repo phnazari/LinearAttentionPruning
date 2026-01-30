@@ -1,26 +1,17 @@
-#!/bin/bash
-# benchmark_forward.sh
-#
-# Benchmark forward-only throughput for initial vs compressed DeltaNet2 models
-#
-# This script measures pure inference performance (no backward pass) to isolate
-# the impact of compression on forward pass speed.
-#
-# Usage:
-#   cd /path/to/CompreSSM2/exp/flame
-#   bash flame/scripts/benchmark_forward.sh
+# Resolve repository root
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+REPO_ROOT="$( cd "$SCRIPT_DIR/../.." && pwd )"
 
-# Activate virtual environment
-source /lustre/home/pnazari/workspace/CompreSSM2/exp/flame/.venv/bin/activate
+# Ensure all submodules and package code are in PYTHONPATH
+# We include flame root specifically because the user wants to import 'custom_models' directly
+export PYTHONPATH="$REPO_ROOT:$REPO_ROOT/src:$REPO_ROOT/flame:$REPO_ROOT/flash-linear-attention:$PYTHONPATH"
 
-# Change to flame directory
-cd /lustre/home/pnazari/workspace/CompreSSM2/exp/flame
+set -e  # Exit on error
 
 # Configuration (matching compression pipeline defaults)
-#INITIAL_MODEL="fla-hub/delta_net-2.7B-100B"
-INITIAL_MODEL="/fast/pnazari/flame/dump/gated_delta_net/340m/10BT/checkpoints"
-#COMPRESSED_MODEL="/fast/pnazari/flame/dump/delta_net/340m/10BT/checkpoints/llm_pruner_ratio_0.5"
-COMPRESSED_MODEL="/fast/pnazari/flame/dump/gated_delta_net/340m/10BT/checkpoints/compressed_16"
+# Use positional arguments with fallbacks to user's specified paths
+INITIAL_MODEL=${1:-"/fast/pnazari/flame/dump/gated_delta_net/340m/10BT/checkpoints"}
+COMPRESSED_MODEL=${2:-"/fast/pnazari/flame/dump/gated_delta_net/340m/10BT/checkpoints/compressed_16"}
 
 #INITIAL_MODEL="m-a-p/1.3B-100B-GatedDeltaNet-pure"
 #COMPRESSED_MODEL="/fast/pnazari/flame/dump/gated_delta_net/1.3B/100BT/checkpoints/compressed_4"
@@ -53,9 +44,7 @@ echo ""
 if [ ! -d "$COMPRESSED_MODEL" ]; then
   echo "ERROR: Compressed model not found at: $COMPRESSED_MODEL"
   echo ""
-  echo "Please run the compression pipeline first:"
-  echo "  cd /lustre/home/pnazari/workspace/CompreSSM2"
-  echo "  ./run_compression_pipeline.sh"
+  echo "Please run the compression pipeline first."
   echo ""
   exit 1
 fi
