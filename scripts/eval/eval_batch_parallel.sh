@@ -2,14 +2,19 @@
 # eval_batch_parallel.sh
 # Parallel evaluation for DeltaNet models via Ray
 
-# Robust path handling
+# Resolve repository root
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_ROOT="$( cd "$SCRIPT_DIR/../.." && pwd )"
 
+# Ensure all submodules and package code are in PYTHONPATH
+export PYTHONPATH="$REPO_ROOT:$REPO_ROOT/src:$REPO_ROOT/flame:$REPO_ROOT/flash-linear-attention:$PYTHONPATH"
 
 set -e
 
+# ============================================================================
 # Configuration
+# ============================================================================
+
 MODEL_NAME=${1:-"delta_net"}
 PARAMS=${2:-"340m"}
 METHOD=${3:-"l1"}
@@ -20,7 +25,7 @@ else
     TOKENS="100BT"
 fi
 
-# Define short names
+# Define short names for models
 case "${MODEL_NAME}" in
     "delta_net")
         MODEL_NAME_SHORT="dn"
@@ -34,14 +39,13 @@ case "${MODEL_NAME}" in
 esac
 
 TOKENIZER_PATH="fla-hub/transformer-1.3B-100B"
-OUTPUT_BASE_DIR=${OUTPUT_BASE_DIR:-"$REPO_ROOT/eval_results/eval_${MODEL_NAME_SHORT}_${PARAMS}"}
-COMPRESSED_BASE=${COMPRESSED_BASE:-$4}
 
-if [ -z "$COMPRESSED_BASE" ]; then
-    echo "Usage: bash $0 <MODEL_NAME> <PARAMS> <METHOD> <COMPRESSED_BASE>"
-    echo "Or: COMPRESSED_BASE=/path/to/checkpoints bash $0 ..."
-    exit 1
-fi
+# Logic-based default paths with override support
+DEFAULT_OUTPUT_BASE="/fast/pnazari/flame/dump/eval_drrqr/eval_${MODEL_NAME_SHORT}_${PARAMS}"
+OUTPUT_BASE_DIR=${OUTPUT_BASE_DIR:-$DEFAULT_OUTPUT_BASE}
+
+DEFAULT_COMPRESSED_BASE="/fast/pnazari/flame/dump/${MODEL_NAME}/${PARAMS}/${TOKENS}/checkpoints"
+COMPRESSED_BASE=${4:-${COMPRESSED_BASE:-$DEFAULT_COMPRESSED_BASE}}
 
 BATCH_SIZE=8
 MAX_LENGTH="10000"
