@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "key-reduction"
+version = "0.1.0"
+description = "A suite for structural pruning of DeltaNet models"
+readme = "README.md"
+authors = [{ name = "Philipp Nazari" }]
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = [
+    "torch",
+    "transformers",
+    "numpy",
+    "scipy",
+    "einops",
+    "tqdm",
+    "absl-py",
+    "datasets"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "flake8"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["key_reduction", "key_reduction.pruners", "key_reduction.utils"]
+
+[tool.setuptools.package-data]
+key_reduction = ["*.py"]
