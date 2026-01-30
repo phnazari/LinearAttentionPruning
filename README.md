@@ -2,6 +2,13 @@
 
 This repository provides a comprehensive suite of tools for compressing and pruning **DeltaNet** and **GatedDeltaNet** models. It focuses on structural pruning (reducing head dimensions and member counts) and low-rank compression to improve inference efficiency and reduce memory footprint while maintaining performance.
 
+
+# Setup
+
+```\bash
+uv init --python 3.10
+```
+
 ## 🚀 Features
 
 - **Multiple Pruning Methods**:
