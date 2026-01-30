@@ -9,6 +9,8 @@ dependencies = [
     "einops==0.7.0",
     "flame",
     "flash-linear-attention",
+    "lm-eval==0.4.9.2",
+    "matplotlib==3.10.8",
     "peft==0.18.0",
     "ray==2.53.0",
     "scipy==1.15.3",

@@ -31,7 +31,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import fla # noqa
 from fla.modules import ShortConvolution
 from fla.modules.l2norm import l2_norm
-import flame.custom_models.delta_net_2 # noqa
+import custom_models.delta_net_2 # noqa
 
 from flame.flame.data import build_dataloader, build_dataset
 

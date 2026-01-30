@@ -9,14 +9,14 @@ from datetime import timedelta
 
 import fla  # noqa
 import fla.models  # noqa - ensures all model configs are registered with AutoConfig
-import flame.custom_models.delta_net_2
+import custom_models.delta_net_2
 import torch
 import torch.serialization
 from torch.distributed.checkpoint.format_utils import dcp_to_torch_save
 from torchtitan.tools.logging import init_logger, logger
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
-import flame.custom_models
+import custom_models
 
 
 @torch.inference_mode()

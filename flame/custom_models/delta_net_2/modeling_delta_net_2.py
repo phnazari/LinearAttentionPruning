@@ -13,8 +13,8 @@ from transformers.utils import logging
 from transformers.utils.deprecation import deprecate_kwarg
 
 from fla.layers.attn import Attention
-from flame.custom_models.delta_net_2.delta_net_2 import DeltaNet2
-from flame.custom_models.delta_net_2.configuration_delta_net_2 import DeltaNet2Config
+from custom_models.delta_net_2.delta_net_2 import DeltaNet2
+from custom_models.delta_net_2.configuration_delta_net_2 import DeltaNet2Config
 from fla.models.utils import Cache, FLAGenerationMixin
 from fla.modules import FusedCrossEntropyLoss, FusedLinearCrossEntropyLoss, RMSNorm
 from fla.modules import GatedMLP as DeltaNetMLP

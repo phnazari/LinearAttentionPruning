@@ -23,7 +23,7 @@ except ImportError:
 
 import fla  # noqa
 import fla.models  # noqa - ensures all model configs are registered with AutoConfig
-import flame.custom_models.delta_net_2
+import custom_models.delta_net_2
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -45,7 +45,7 @@ from torchtitan.tools.logging import init_logger, logger
 from torchtitan.tools.profiling import maybe_enable_memory_snapshot, maybe_enable_profiling
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
-import flame.custom_models
+import custom_models
 from flame.flame.components.checkpoint import TrainState
 from flame.flame.config_manager import JobConfig
 from flame.flame.data import build_dataloader, build_dataset

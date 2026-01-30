@@ -12,7 +12,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import fla  # noqa
 
 # Add parent directory to path to import custom models
-import flame.custom_models.delta_net_2  # noqa - register custom models
+import custom_models.delta_net_2  # noqa - register custom models
 
 
 def sizeof_fmt(num, suffix='B'):
