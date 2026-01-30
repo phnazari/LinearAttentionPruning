@@ -5,18 +5,12 @@ This repository provides an end-to-end pipeline for training, compressing, and e
 ## 🚀 Quick Start
 
 ### 1. Training a Model
-To train a model from scratch or continue training, use the `train.sh` script within the `flame` submodule.
+To train a model from scratch or continue training, use the pre-configured scripts or `train.sh` within the `flame` submodule.
 
 ```bash
-# Example: Training a 340M GatedDeltaNet
-NNODE=1 NGPU=8 LOG_RANK=0 bash flame/train.sh \
-  --job.config_file flame/models/fla.toml \
-  --job.dump_folder exp/gated-deltanet-340M \
-  --model.config configs/gated_delta_net_340M.json \
-  --model.tokenizer_path fla-hub/transformer-1.3B-100B \
-  --training.steps 20000 \
-  --training.dataset HuggingFaceFW/fineweb-edu \
-  --training.dataset_name sample-10BT
+# Example: Training a 340M DeltaNet on 10BT of fineweb-edu
+# This script uses the flame submodule and optimized configurations
+bash flame/flame/scripts/deltanet_340m.sh
 ```
 
 ### 2. Pruning a Model
