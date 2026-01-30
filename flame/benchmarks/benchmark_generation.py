@@ -11,8 +11,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 import fla  # noqa
 
-# Add parent directory to path to import custom models
-sys.path.insert(0, str(Path(__file__).parent.parent))
+import custom_models.delta_net_2  # noqa - register custom models
 import custom_models.delta_net_2  # noqa - register custom models
 
 

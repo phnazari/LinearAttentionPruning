@@ -24,18 +24,7 @@ import torch
 from tqdm import trange
 from transformers import AutoConfig, AutoModelForCausalLM
 
-# Add parent directories to path to import local libraries
-from pathlib import Path
-# benchmark_forward.py is at: project_root/exp/flame/benchmarks/benchmark_forward.py
-project_root = Path(__file__).parent.parent.parent.parent
-fla_path = str(project_root / "flash-linear-attention")
-flame_path = str(project_root / "exp/flame")
-
-print(f"DEBUG: Adding to sys.path: {fla_path}")
-print(f"DEBUG: Adding to sys.path: {flame_path}")
-
-sys.path.insert(0, fla_path)
-sys.path.insert(0, flame_path)
+import fla  # noqa
 
 import fla  # noqa
 import custom_models.delta_net_2  # noqa - register custom models

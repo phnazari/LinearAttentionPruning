@@ -11,13 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import trange
 
-# Add parent directories to path to import local libraries
-project_root = Path(__file__).parent.parent.parent.parent
-fla_path = str(project_root / "flash-linear-attention")
-flame_path = str(project_root / "exp/flame")
-
-sys.path.insert(0, fla_path)
-sys.path.insert(0, flame_path)
+from fla.layers.delta_net import DeltaNet
 
 from fla.layers.delta_net import DeltaNet
 from fla.layers.gated_deltanet import GatedDeltaNet

@@ -41,15 +41,6 @@ from typing import Optional
 
 import numpy as np
 
-# Setup paths for local libraries
-# eval_checkpoint.py is at: project_root/exp/flame/flame/eval_checkpoint.py
-
-print(f"DEBUG: Adding to sys.path: {fla_path}")
-print(f"DEBUG: Adding to sys.path: {flame_path}")
-
-sys.path.insert(0, fla_path)
-sys.path.insert(0, flame_path)
-
 import fla  # noqa
 import fla.models  # noqa - ensures all model configs are registered with AutoConfig
 import custom_models.delta_net_2
