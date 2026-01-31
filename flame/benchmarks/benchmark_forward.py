@@ -27,7 +27,7 @@ from transformers import AutoConfig, AutoModelForCausalLM
 import fla  # noqa
 
 import fla  # noqa
-import custom_models.delta_net_2  # noqa - register custom models
+import flame.custom_models.delta_net_2  # noqa - register custom models
 
 
 def sizeof_fmt(num, suffix='B'):

@@ -52,9 +52,9 @@ except ImportError as e:
 
 # Import custom models
 try:
-    import custom_models.delta_net_2  # noqa: register DeltaNet2
+    import flame.custom_models.delta_net_2  # noqa: register DeltaNet2
 except ImportError:
-    print("Warning: Could not import custom_models. DeltaNet2 models may not be available.")
+    print("Warning: Could not import flame.custom_models. DeltaNet2 models may not be available.")
 
 # Import data utilities
 try:

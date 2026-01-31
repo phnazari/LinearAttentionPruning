@@ -26,7 +26,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # Import flash-linear-attention modules
 import fla # noqa
 from fla.modules import ShortConvolution
-import custom_models.delta_net_2 # noqa
+import flame.custom_models.delta_net_2 # noqa
 
 def get_deltanet(model_path):
     print(f"Loading model from {model_path}...")

@@ -43,14 +43,14 @@ import numpy as np
 
 import fla  # noqa
 import fla.models  # noqa - ensures all model configs are registered with AutoConfig
-import custom_models.delta_net_2
+import flame.custom_models.delta_net_2
 import torch
 import torch.serialization
 from torch.distributed.checkpoint.format_utils import dcp_to_torch_save
 from torchtitan.tools.logging import init_logger, logger
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
-import custom_models
+import flame.custom_models
 
 # Import lm-eval components
 try:

@@ -16,7 +16,7 @@ sys.path.insert(0, str(workspace_root / "exp/flame"))
 
 import fla  # noqa
 import fla.models  # noqa - ensures all model configs are registered with AutoConfig
-import custom_models.delta_net_2
+import flame.custom_models.delta_net_2
 from torchtitan.tools.logging import init_logger, logger
 
 

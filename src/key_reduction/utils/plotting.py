@@ -24,7 +24,7 @@ import torch
 
 # Import fla to register DeltaNet and other models with transformers
 import fla  # noqa
-import custom_models.delta_net_2
+import flame.custom_models.delta_net_2
 
 from transformers import AutoModelForCausalLM
 
