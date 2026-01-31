@@ -5,11 +5,11 @@
 # LICENSE file in the root directory of this source tree.
 
 # CRITICAL: Add local FLA to path BEFORE any imports
-from pathlib import Path
-import sys
-workspace_root = Path(__file__).resolve().parents[3]  # Go up from exp/flame/flame/train.py
-sys.path.insert(0, str(workspace_root / "flash-linear-attention"))
-sys.path.insert(0, str(workspace_root / "exp/flame"))
+#from pathlib import Path
+#import sys
+#workspace_root = Path(__file__).resolve().parents[3]  # Go up #from exp/flame/flame/train.py
+#sys.path.insert(0, str(workspace_root / #"flash-linear-attention"))
+#sys.path.insert(0, str(workspace_root / "exp/flame"))
 
 import json
 import os
@@ -23,7 +23,7 @@ except ImportError:
 
 import fla  # noqa
 import fla.models  # noqa - ensures all model configs are registered with AutoConfig
-import custom_models.delta_net_2
+import flame.custom_models.delta_net_2
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
