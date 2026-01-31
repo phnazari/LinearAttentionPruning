@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Activate virtual environment
-source /lustre/path/to/exp/flame/.venv/bin/activate
+# Resolve repository root
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+FLAME_ROOT="$( cd "$SCRIPT_DIR/../.." && pwd )"
 
-# Change to working directory
-cd /lustre/path/to/exp/flame
+# Run training from the flame root
+cd "$FLAME_ROOT"
 
-# Run training
 NNODE=1 NGPU=8 LOG_RANK=0 bash train.sh \
   --job.config_file flame/models/fla.toml \
-  --job.dump_folder /path/to/flame/dump/delta_net_2_head/340m/10BT \
+  --job.dump_folder outputs/delta_net_2_head/340m/10BT \
   --model.config configs/delta_net_2_head_340M.json \
   --model.tokenizer_path fla-hub/transformer-1.3B-100B \
   --optimizer.name AdamW \

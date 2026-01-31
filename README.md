@@ -6,7 +6,7 @@ It allows for structured Q/K dimension reduction of DeltaNet and Gated DeltaNet 
 ## Installation
 First, clone this repository:
 ```bash
-git clone git@github.com:phnazari/KeyReduction.git
+git clone git@github.com:phnazari/KeyReduction.git && cd KeyReduction
 ```
 Next, install the dependencies via `uv`:
 ```bash
@@ -22,7 +22,6 @@ Now, you are ready to go!
 To train a model from scratch or continue training, use the pre-configured scripts or `train.sh` within the `flame` submodule.
 
 ```bash
-# Example: Training a 340M DeltaNet on 10BT of fineweb-edu
 bash flame/flame/scripts/deltanet_340m.sh
 ```
 
@@ -43,7 +42,6 @@ bash scripts/run_pruning/run_rrqr.sh
 After pruning, performance can be recovered by finetuning the model using LoRA.
 
 ```bash
-# Apply LoRA to the pruned checkpoint
 bash scripts/finetuning/run_lora.sh ./exp/pruned_rrqr ./exp/finetuned_rrqr
 ```
 
@@ -51,7 +49,6 @@ bash scripts/finetuning/run_lora.sh ./exp/pruned_rrqr ./exp/finetuned_rrqr
 To evaluate your models (initial, pruned, and finetuned) across multiple benchmarks in parallel. This script automatically discovers all compressed and finetuned models in the provided directory.
 
 ```bash
-# Evaluate all checkpoints in a folder
 bash scripts/eval/eval_batch_parallel.sh ./exp/checkpoints
 ```
 
