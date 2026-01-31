@@ -48,7 +48,7 @@ echo "✓ Pruning complete!"
 # Step 2: Convert to DCP
 echo ""
 echo "Step 2: Converting pruned model to DCP format..."
-python -m flame.utils.convert_hf_to_dcp \
+python $REPO_ROOT/flame/flame/utils/convert_hf_to_dcp.py \
     --model "$OUTPUT_DIR" \
     --checkpoint "$OUTPUT_DIR/step-0"
 
