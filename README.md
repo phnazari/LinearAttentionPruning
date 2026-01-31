@@ -26,7 +26,7 @@ bash flame/flame/scripts/deltanet_340m.sh
 ```
 
 ### 2. Pruning a Model
-We provide several structural pruning methods. You can prune either a local checkpoint or a model directly from the Hugging Face Hub.
+We provide several structural pruning methods. You can prune either a local checkpoint or a model directly from the Hugging Face Hub. Here, we show how to prune a pre-trained DeltaNet 1.3B model from [fla-hub](https://huggingface.co/fla-hub).
 
 #### Example: Deep RRQR (drrqr)
 This method uses activations to identify which head dimensions are redundant.
@@ -42,23 +42,22 @@ bash scripts/run_pruning/run_rrqr.sh
 After pruning, performance can be recovered by finetuning the model using LoRA.
 
 ```bash
-bash scripts/finetuning/run_lora.sh ./exp/pruned_rrqr ./exp/finetuned_rrqr
+bash scripts/finetuning/run_lora.sh ./exp/pruned_rrqr/step-0 ./exp/finetuned_rrqr
 ```
 
 ### 4. Evaluation with Multi-Evaluator
 To evaluate your models (initial, pruned, and finetuned) across multiple benchmarks in parallel. This script automatically discovers all compressed and finetuned models in the provided directory.
 
 ```bash
-bash scripts/eval/eval_batch_parallel.sh ./exp/checkpoints
+bash scripts/eval/eval_batch_parallel.sh ./exp/finetuned_rrqr
 ```
 
 ### 5. Benchmarking Performance
 Verify the speedup and memory savings of your compressed models compared to the baseline.
 
 ```bash
-# Benchmark throughput and latency
-INITIAL_MODEL="path/to/baseline" \
-COMPRESSED_MODEL="path/to/pruned" \
+INITIAL_MODEL="fla-hub/delta_net-1.3B-100B" \
+COMPRESSED_MODEL="exp/finetuned_rrqr" \
 bash scripts/benchmarking/benchmark_forward.sh
 ```
 
@@ -66,7 +65,6 @@ bash scripts/benchmarking/benchmark_forward.sh
 Analyze the rank utilization of recurrent states during forward passes to understand how well the model is utilizing its latent space.
 
 ```bash
-# Compute rank utilization for a model
 bash scripts/eval/run_effective_state_rank.sh /path/to/model ./outputs/rank_analysis
 ```
 This script generates:
