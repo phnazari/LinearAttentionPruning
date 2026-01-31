@@ -8,7 +8,7 @@ First, clone this repository:
 ```bash
 git clone git@github.com:phnazari/KeyReduction.git
 ```
-Next, install the dependencies vua `uv`:
+Next, install the dependencies via `uv`:
 ```bash
 uv venv --python=3.10
 source .venv/bin/activate
