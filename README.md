@@ -59,6 +59,17 @@ COMPRESSED_MODEL="path/to/pruned" \
 bash scripts/benchmarking/benchmark_forward.sh
 ```
 
+### 6. State Rank Analysis
+Analyze the rank utilization of recurrent states during forward passes to understand how well the model is utilizing its latent space.
+
+```bash
+# Compute rank utilization for a model
+bash scripts/eval/run_effective_state_rank.sh /path/to/model ./outputs/rank_analysis
+```
+This script generates:
+- **Rank Lists**: Per-head rank utilization tensors saved in `.pt` format.
+- **Visualizations**: Combined plots showing rank evolution across layers.
+
 ## 🛠️ Installation & Setup
 
 ```bash
