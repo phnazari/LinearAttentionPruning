@@ -52,7 +52,7 @@ echo "Starting evaluation..."
 
 #if [ "${IS_HF_CHECKPOINT}" = true ]; then
 # HuggingFace Format
-python -u -m flame.eval_checkpoint \
+python -u "${REPO_ROOT}/scripts/eval/eval_checkpoint.py \
     --pretrained "${CHECKPOINT_DIR}" \
     --tasks "${TASKS}" \
     --batch_size ${BATCH_SIZE} \
