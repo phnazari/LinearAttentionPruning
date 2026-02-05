@@ -17,3 +17,6 @@ dist-packages/*
 # output
 outputs
 exp/
+
+# development
+dev/
