@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/logo.png" width="800" alt="KeyReduction">
+  <img src="assets/logo.png" width="800" alt="Linear Attention Pruning">
 </p>
 
-<h1 align="center">KeyReduction</h1>
+<h1 align="center">Linear Attention Pruning</h1>
 
 <p align="center">
   <b>The Key to State Reduction in Linear Attention: A Rank-based Perspective</b><br>
